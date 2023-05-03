@@ -2,17 +2,35 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-
+import {useState, useRef } from 'react';
+import { FaFilePdf } from "react-icons/fa";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export default function Blog() {
-
-
+const [loader, setLoader] = useState(false)
+const captureRef = useRef(null);
+const downloadPDF =()=>{
+  const capture = captureRef.current;
+  // const capture= document.querySelector('.actual-receipt');
+  setLoader(true);
+  html2canvas(capture).then((canvas)=>{
+    const imgData = canvas.toDataURL('img/png');
+    const doc = new jsPDF('p','mm','a4');
+    const componentWidth = doc.internal.pageSize.getWidth();
+    const componentHeight = doc.internal.pageSize.getHeight();
+    doc.addImage(imgData,'PNG', 0, 0, componentWidth, componentHeight);
+    setLoader(false);
+    doc.save('BlogPage.pdf');
+  })
+}
   return (
     <div className='mb-5'>
-      <Container>
+      <Container ref={captureRef} >
         <h2 className='text-center my-4'>All Questions</h2>
-        <Row className="g-4">
+        <Row className="g-4 ">
           <Col md={6}>
             <Card className='h-100'>
               <Card.Body>
@@ -55,7 +73,15 @@ export default function Blog() {
           </Col>
         </Row>
       </Container>
-
+      <div className="text-center">
+      <Button className="mt-5" variant="danger" onClick={downloadPDF} disabled={!(loader === false)}>
+        {loader?(
+          <span>Downloading...</span>
+        ):(
+          <span>Download Pdf <FaFilePdf/> </span>
+        )}
+      </Button>
+    </div>
     </div>
   )
 }
