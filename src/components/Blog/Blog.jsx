@@ -4,7 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+
 export default function Blog() {
+
+
   return (
     <div className='mb-5'>
       <Container>
@@ -51,8 +54,8 @@ export default function Blog() {
             </Card>
           </Col>
         </Row>
-
       </Container>
+
     </div>
   )
 }
