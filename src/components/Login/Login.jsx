@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { Form, Button, Container } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Provider/AuthProvider';
 export default function Login() {
     const { signIn } = useContext(AuthContext);
     const [succes, setSuccess]= useState();
     const [error, setError] = useState()
+    const navigate = useNavigate();
     const handleLogin = event => {
         event.preventDefault();
         setSuccess('')
@@ -22,6 +23,7 @@ export default function Login() {
                 console.log(loggedUser);
                 setSuccess("Login successfully")
                 form.reset()
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);

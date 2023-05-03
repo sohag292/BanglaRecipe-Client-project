@@ -3,6 +3,8 @@ import { Carousel } from 'react-bootstrap';
 import banner1 from '../../assets/image/banner.jpg'
 import banner2 from '../../assets/image/banner2.jpg'
 import banner3 from '../../assets/image/banner3.jpg'
+import Subscribtion from '../subcribation/Subcribation';
+import AboutUs from '../AboutUS/AboutUs';
 export default function Home() {
   return (
     <div>
@@ -45,6 +47,8 @@ export default function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <AboutUs></AboutUs>
+      <Subscribtion></Subscribtion>
 
     </div>
   )

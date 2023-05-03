@@ -8,7 +8,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import { AuthContext } from '../Provider/AuthProvider';
 
 export default function Header() {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout =()=>{
+        logOut()
+        .then()
+        .catch(error =>console.log(error))
+    }
     console.log(user);
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,14 +27,12 @@ export default function Header() {
                     </Nav>
                     <Nav>
                         {
-                            user && <Nav.Link href="#deets">
-                                {user.displayName}
-                            </Nav.Link>
+                            user && <p className="text-white">sohag</p>
                         }
 
                         <Nav.Link eventKey={2} href="#memes">
                             {
-                                user ? <button>Logout</button>:<Link to="/login"><button>Login</button></Link>
+                                user ? <button onClick={handleLogout} className="btn btn-success">Logout</button>:<Link to="/login"><button className="btn btn-success">Login</button></Link>
                             }
                         </Nav.Link>
                     </Nav>

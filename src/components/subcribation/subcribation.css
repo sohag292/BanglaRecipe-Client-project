@@ -1,0 +1,4 @@
+.bg-gradient-primary {
+    background: linear-gradient(to bottom, #007bff, #000);
+    opacity: 0.8;
+  }
