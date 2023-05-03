@@ -5,14 +5,15 @@ import ActiveLink from '../ActiveLink/ActiveLink';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image';
 import { AuthContext } from '../Provider/AuthProvider';
 
 export default function Header() {
     const { user, logOut } = useContext(AuthContext);
-    const handleLogout =()=>{
+    const handleLogout = () => {
         logOut()
-        .then()
-        .catch(error =>console.log(error))
+            .then()
+            .catch(error => console.log(error))
     }
     console.log(user);
     return (
@@ -27,12 +28,16 @@ export default function Header() {
                     </Nav>
                     <Nav>
                         {
-                            user && <p className="text-white">sohag</p>
+                            user && (
+                                <div className="w-50 h-50 d-flex align-items-center">
+                                    <Image title={user.displayName} className="img-fluid" src={user.photoURL} roundedCircle />
+                                </div>
+                            )
                         }
 
                         <Nav.Link eventKey={2} href="#memes">
                             {
-                                user ? <button onClick={handleLogout} className="btn btn-success">Logout</button>:<Link to="/login"><button className="btn btn-success">Login</button></Link>
+                                user ? <button onClick={handleLogout} className="btn btn-success">Logout</button> : <Link to="/login"><button className="btn btn-success">Login</button></Link>
                             }
                         </Nav.Link>
                     </Nav>

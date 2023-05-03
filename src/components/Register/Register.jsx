@@ -3,36 +3,36 @@ import { Form, Button, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import { AuthContext } from "../Provider/AuthProvider";
 export default function Register() {
-    const {createUser} = useContext(AuthContext)
-    const [succes, setSuccess]= useState();
-    const [error, setError]= useState();
-
-    const handleRegister = event =>{
-        event.preventDefault();
-        setSuccess('')
-        setError('')
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photo = form.photo.value;
-        console.log(name,email,password,photo);
-    
-        if(password.length < 6){
-            setError("Password should be at least 6 characters");
-            return;
-        }
-    
-        createUser(email, password)
-        .then(result =>{
-            const createUser = result.user;
-            console.log(createUser);
-            setSuccess("Your Registation Successfully Done!!!")
-            form.reset()
+    const { createUser, updateUserData } = useContext(AuthContext)
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+  
+    const handleRegister = event => {
+      event.preventDefault();
+      setSuccess('');
+      setError('');
+      const form = event.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const password = form.password.value;
+      const photo = form.photo.value;
+  
+      if (password.length < 6) {
+        setError("Password should be at least 6 characters");
+        return;
+      }
+  
+      createUser(email, password)
+        .then(result => {
+          const createdUser = result.user;
+          console.log(createdUser);
+          setSuccess("Your Registration Successfully Done!!!")
+          form.reset()
+          updateUserData(result.user, name, photo);
         })
-        .catch(error =>{
-            setError(error.message);
-            form.reset()
+        .catch(error => {
+          setError(error.message);
+          form.reset()
         })
     }
     
@@ -44,7 +44,7 @@ export default function Register() {
                     <hr className="mb-5" />
                     <Form onSubmit={handleRegister}>
                     <Form.Text className="text-success">
-                    <p className=" text-success text-center fs-5 fw-bolder">{succes}</p>
+                    <p className=" text-success text-center fs-5 fw-bolder">{success}</p>
                             </Form.Text>
                         <Form.Group controlId="formName">
                             <Form.Label>Name</Form.Label>

@@ -2,12 +2,15 @@ import React, { useContext, useState } from 'react'
 import { Form, Button, Container } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../Provider/AuthProvider';
+import { AuthContext, auth } from '../Provider/AuthProvider';
+import { signInWithPopup } from 'firebase/auth';
 export default function Login() {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const [succes, setSuccess]= useState();
     const [error, setError] = useState()
     const navigate = useNavigate();
+
+
     const handleLogin = event => {
         event.preventDefault();
         setSuccess('')
@@ -31,7 +34,34 @@ export default function Login() {
                 form.reset()
             })
 
+            
+
     }
+
+    const handleGoogleLogin = ()=>{
+        signInWithGoogle()
+      .then((result) => {
+            const user = result.user;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    }
+
+    const handleGithubLogin = ()=>{
+        signInWithGithub()
+      .then((result) => {
+            const user = result.user;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+    }
+
+
+
+
+
     return (
         <div>
             <Container>
@@ -66,10 +96,10 @@ export default function Login() {
                                 Login
                             </Button>
                             <h6 className='text-center'>OR</h6>
-                            <Button variant="danger" type="submit">
+                            <Button  onClick={handleGoogleLogin} variant="danger">
                                 <FaGoogle /> Login With Google
                             </Button>
-                            <Button variant="dark" type="submit">
+                            <Button onClick={handleGithubLogin} variant="dark" type="submit">
                                 <FaGithub /> Login With Github
                             </Button>
                         </div>
