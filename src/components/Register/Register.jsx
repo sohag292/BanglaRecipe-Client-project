@@ -17,11 +17,13 @@ export default function Register() {
       const password = form.password.value;
       const photo = form.photo.value;
   
+    //   email valdation
       if (password.length < 6) {
         setError("Password should be at least 6 characters");
         return;
       }
   
+    //   user Create
       createUser(email, password)
         .then(result => {
           const createdUser = result.user;
