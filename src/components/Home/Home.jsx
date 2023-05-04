@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Spinner} from 'react-bootstrap';
+
 import banner1 from '../../assets/image/banner.jpg'
 import banner2 from '../../assets/image/banner2.jpg'
 import banner3 from '../../assets/image/banner3.jpg'
@@ -9,11 +10,14 @@ import Row from 'react-bootstrap/Row';
 import CheifProfileCard from '../CheifProfileCard/CheifProfileCard';
 export default function Home() {
   const [chiefProfile, setChiefProfile] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch('http://localhost:5000/chieprofile')
       .then(res => res.json())
-      .then(data => setChiefProfile(data))
+      .then(data => {
+        setChiefProfile(data);
+        setLoading(false);
+      })
       .catch(error => console.log(error))
   }, [])
 
@@ -60,15 +64,21 @@ export default function Home() {
         </Carousel.Item>
       </Carousel>
       <div className="container my-5">
-        <h1 className="text-center">Our Chief</h1>
-        <hr className="mb-5 w-25 mx-auto" />
-      <Row xs={1} md={2} className="g-4">
-        {
-          chiefProfile.map(profile =><CheifProfileCard key={profile.chef_id} profile={profile}></CheifProfileCard>)
-        }
-      
-      </Row>
-      </div>
+      <h1 className="text-center">Our Chief</h1>
+      <hr className="mb-5 w-25 mx-auto" />
+      {loading ? (
+        <div className="text-center">
+          <Spinner animation="border" role="status" />
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      ) : (
+        <Row xs={1} md={2} className="g-4">
+          {chiefProfile.map((profile) => (
+            <CheifProfileCard key={profile.chef_id} profile={profile} />
+          ))}
+        </Row>
+      )}
+    </div>
       <AboutUs></AboutUs>
       <Subscribtion></Subscribtion>
 
