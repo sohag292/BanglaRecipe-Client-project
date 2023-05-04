@@ -7,6 +7,5 @@
   <li>Responsive design for optimal viewing on different devices</li>
 </ul>
 
-```
 
 Project Link: : [https://github.io/create-react-app/](https://glowing-chimera-db0e43.netlify.app/)
