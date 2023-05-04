@@ -8,7 +8,7 @@ export default function Footer() {
                 <Container>
                     <Row>
                         <Col md={5}>
-                            <h1 className='mb-5'>Bangla<span className='text-success'>R</span>ecipe</h1>
+                            <h1 className='mb-5'>Indian<span className='text-success'>R</span>ecipe</h1>
                             <h4>Explore More Recipes</h4>
                             <p>Discover thousands of delicious recipes from our chefs.</p>
                         </Col>
@@ -39,12 +39,12 @@ export default function Footer() {
                                     <li>email@example.com</li>
                                 </ul>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <ul class="list-inline m-0">
-                                    <li class="list-inline-item me-3 fs-5"><FaFacebook /></li>
-                                    <li class="list-inline-item me-3 fs-5"><FaTwitter /></li>
-                                    <li class="list-inline-item me-3 fs-5"><FaInstagram /></li>
-                                    <li class="list-inline-item me-3 fs-5"><FaYoutube /></li>
+                            <div className="d-flex justify-content-center">
+                                <ul className="list-inline m-0">
+                                    <li className="list-inline-item me-3 fs-5"><FaFacebook /></li>
+                                    <li className="list-inline-item me-3 fs-5"><FaTwitter /></li>
+                                    <li className="list-inline-item me-3 fs-5"><FaInstagram /></li>
+                                    <li className="list-inline-item me-3 fs-5"><FaYoutube /></li>
                                 </ul>
                             </div>
 

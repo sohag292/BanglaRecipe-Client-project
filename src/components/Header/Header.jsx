@@ -15,11 +15,11 @@ export default function Header() {
             .then()
             .catch(error => console.log(error))
     }
-    console.log(user);
+
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="#home">Bangla<span className='text-success'>R</span>ecipe</Navbar.Brand>
+        <Navbar collapseOnSelect className="h-25" expand="lg" bg="dark" variant="dark">
+            <Container  className="brand-name">
+                <Navbar.Brand href="#home">Indian<span className='text-success'>R</span>ecipe</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto">
@@ -35,11 +35,11 @@ export default function Header() {
                             )
                         }
 
-                        <Nav.Link eventKey={2} href="#memes">
+                        
                             {
                                 user ? <button onClick={handleLogout} className="btn btn-success">Logout</button> : <Link to="/login"><button className="btn btn-success">Login</button></Link>
                             }
-                        </Nav.Link>
+                       
                     </Nav>
                 </Navbar.Collapse>
             </Container>

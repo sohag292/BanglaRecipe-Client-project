@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Carousel } from 'react-bootstrap';
 import banner1 from '../../assets/image/banner.jpg'
 import banner2 from '../../assets/image/banner2.jpg'
 import banner3 from '../../assets/image/banner3.jpg'
 import Subscribtion from '../subcribation/Subcribation';
 import AboutUs from '../AboutUS/AboutUs';
+import Row from 'react-bootstrap/Row';
+import CheifProfileCard from '../CheifProfileCard/CheifProfileCard';
 export default function Home() {
+  const [chiefProfile, setChiefProfile] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/chieprofile')
+      .then(res => res.json())
+      .then(data => setChiefProfile(data))
+      .catch(error => console.log(error))
+  }, [])
+
+
   return (
     <div>
       <Carousel>
@@ -30,7 +42,7 @@ export default function Home() {
           <Carousel.Caption>
             <h1 className="d-none d-sm-block text-primary fw-bolder">Lemon Butter chicken </h1>
             <p className="d-none d-sm-block text-dark fw-4 fw-bolder ">.
-            Lemon Butter chicken, also known as murgh makhani, is a popular Indian dish made with marinated chicken pieces that are cooked in a creamy tomato-based sauce. The chicken is usually marinated in a mixture of yogurt and spices, then grilled or roasted before being added to the sauce. The rich and flavorful sauce is made with butter, tomatoes, cream, and a blend of aromatic spices such as cumin, coriander, and garam masala. Butter chicken is often served with rice, naan, or roti, and is a beloved dish in Indian cuisine.</p>
+              Lemon Butter chicken, also known as murgh makhani, is a popular Indian dish made with marinated chicken pieces that are cooked in a creamy tomato-based sauce. The chicken is usually marinated in a mixture of yogurt and spices, then grilled or roasted before being added to the sauce. The rich and flavorful sauce is made with butter, tomatoes, cream, and a blend of aromatic spices such as cumin, coriander, and garam masala. Butter chicken is often served with rice, naan, or roti, and is a beloved dish in Indian cuisine.</p>
             <h1 className="d-block d-sm-none text-primary fw-bolder">Lemon Butter chicken</h1>
           </Carousel.Caption>
         </Carousel.Item>
@@ -47,6 +59,16 @@ export default function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="container my-5">
+        <h1 className="text-center">Our Chief</h1>
+        <hr className="mb-5 w-25 mx-auto" />
+      <Row xs={1} md={2} className="g-4">
+        {
+          chiefProfile.map(profile =><CheifProfileCard key={profile.chef_id} profile={profile}></CheifProfileCard>)
+        }
+      
+      </Row>
+      </div>
       <AboutUs></AboutUs>
       <Subscribtion></Subscribtion>
 
