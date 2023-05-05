@@ -3,7 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import { AuthContext } from "../Provider/AuthProvider";
 export default function Register() {
-    const { createUser, updateUserData } = useContext(AuthContext)
+    const { createUser, updateUserData, logOut } = useContext(AuthContext)
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
@@ -31,6 +31,7 @@ export default function Register() {
                 setSuccess("Your Registration Successfully Done!!!")
                 form.reset()
                 updateUserData(result.user, name, photo);
+                logOut();
             })
             .catch(error => {
                 setError(error.message);

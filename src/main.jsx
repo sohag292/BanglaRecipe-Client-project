@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/chiefdetails/:id",
         element:<PrivateRoute><CheifViewDetails></CheifViewDetails></PrivateRoute>,
-        loader:({params}) =>fetch(`http://localhost:5000/chiefdetails/${params.id}`)
+        loader:({params}) =>fetch(`https://indian-recipe-project-server-side-sohag292.vercel.app/chiefdetails/${params.id}`)
       },
     ],
   },

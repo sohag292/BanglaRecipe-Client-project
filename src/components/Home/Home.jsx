@@ -12,7 +12,7 @@ export default function Home() {
   const [chiefProfile, setChiefProfile] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch('http://localhost:5000/chieprofile')
+    fetch('https://indian-recipe-project-server-side-sohag292.vercel.app/chieprofile')
       .then(res => res.json())
       .then(data => {
         setChiefProfile(data);
