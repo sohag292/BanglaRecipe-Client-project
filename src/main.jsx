@@ -14,6 +14,7 @@ import Register from './components/Register/Register';
 import Error from './components/Error/Error';
 import AuthProvider from './components/Provider/AuthProvider';
 import CheifViewDetails from './components/CheifViewDetails/CheifViewDetails';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/chiefdetails/:id",
-        element:<CheifViewDetails></CheifViewDetails>,
+        element:<PrivateRoute><CheifViewDetails></CheifViewDetails></PrivateRoute>,
         loader:({params}) =>fetch(`http://localhost:5000/chiefdetails/${params.id}`)
       },
     ],

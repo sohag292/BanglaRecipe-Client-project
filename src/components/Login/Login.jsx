@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Form, Button, Container } from "react-bootstrap";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext, auth } from '../Provider/AuthProvider';
 import { signInWithPopup } from 'firebase/auth';
 export default function Login() {
@@ -9,7 +9,8 @@ export default function Login() {
     const [succes, setSuccess]= useState();
     const [error, setError] = useState()
     const navigate = useNavigate();
-
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -26,22 +27,21 @@ export default function Login() {
                 console.log(loggedUser);
                 setSuccess("Login successfully")
                 form.reset()
-                navigate('/')
+                navigate(from, {replace:true})
             })
             .catch(error => {
                 console.log(error);
                 setError("Email or password is incorrect");
                 form.reset()
             })
-
-            
-
     }
 
     const handleGoogleLogin = ()=>{
         signInWithGoogle()
       .then((result) => {
             const user = result.user;
+            setSuccess("Login successfully")
+            navigate(from, {replace:true})
           })
           .catch((error) => {
             console.error(error);
@@ -52,15 +52,12 @@ export default function Login() {
         signInWithGithub()
       .then((result) => {
             const user = result.user;
+            setSuccess("Login successfully")
           })
           .catch((error) => {
             console.error(error);
           });
     }
-
-
-
-
 
     return (
         <div>

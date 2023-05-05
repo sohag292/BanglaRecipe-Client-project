@@ -7,26 +7,32 @@ export const auth = getAuth(app);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const GoogleProvider = new GoogleAuthProvider()
   const GithubProvider = new GithubAuthProvider()
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   const signIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, loggedUser => {
       console.log("Logged in user inside auth statea observer", loggedUser)
-      setUser(loggedUser)
+      setUser(loggedUser);
+      setLoading(false);
+
     })
     return () => {
       unsubscribe();
@@ -55,6 +61,7 @@ export default function AuthProvider({ children }) {
 
   const authInfo = {
     user,
+    loading,
     createUser,
     signIn,
     logOut,

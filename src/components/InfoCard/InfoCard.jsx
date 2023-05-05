@@ -30,19 +30,16 @@ export default function InfoCard({ data }) {
                     </ul>
                     <h5>Cooking Method</h5>
                     <p className="card-text">{cooking_method}</p>
-
                 </div>
                 <div className="ps-4">
-                    Rating :  
-                <Rating placeholderRating={rating}
-                    emptySymbol={ <FaRegStar></FaRegStar>}
-                    placeholderSymbol={<FaStar className='text-warning'></FaStar>}
-                    fullSymbol={<FaStar></FaStar>}
-/>
-                       
+                    Rating :
+                    <Rating placeholderRating={rating}
+                        emptySymbol={<FaRegStar></FaRegStar>}
+                        placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                        fullSymbol={<FaStar></FaStar>}
+                    />
                 </div>
                 <div className=" text-center mt-4">
-
                     {isLoading ? (
                         <Spinner animation="border" variant="primary" />
                     ) : (

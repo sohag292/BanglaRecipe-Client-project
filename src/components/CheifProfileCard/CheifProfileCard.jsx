@@ -8,7 +8,6 @@ import { FcDownRight } from "react-icons/fc";
 import { HiThumbUp } from "react-icons/hi";
 
 export default function CheifProfileCard({ profile}) {
-    console.log(profile);
     const{chef_id,image,name,experience,likes} = profile
     return (
         <Col md={4}>
@@ -16,7 +15,6 @@ export default function CheifProfileCard({ profile}) {
                     <LazyLoad className=' my-4 mx-auto'  height={230} width={220} threshold={0.95}>
                         <img className="img-fluid" src={image} alt="Chef" />
                     </LazyLoad>
-
                 <Card.Body>
                     <h3>Name: {name}</h3>
                     <h5>Experience: {experience}</h5>
@@ -32,7 +30,7 @@ export default function CheifProfileCard({ profile}) {
                     </div>
                 </Card.Body>
             </Card>
-        </Col >
+        </Col>
 
 
     )
