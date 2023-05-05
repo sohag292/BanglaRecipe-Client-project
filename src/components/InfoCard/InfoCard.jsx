@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Toast, Button, Spinner } from "react-bootstrap";
-
+import Rating from "react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa";
 export default function InfoCard({ data }) {
     console.log(data);
-    const { cooking_method, recipe_name, ingredients } = data;
+    const { cooking_method, recipe_name, ingredients, rating } = data;
     const [isFavorited, setIsFavorited] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +30,19 @@ export default function InfoCard({ data }) {
                     </ul>
                     <h5>Cooking Method</h5>
                     <p className="card-text">{cooking_method}</p>
+
                 </div>
-                <div className="card-footer text-center">
+                <div className="ps-4">
+                    Rating :  
+                <Rating placeholderRating={rating}
+                    emptySymbol={ <FaRegStar></FaRegStar>}
+                    placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                    fullSymbol={<FaStar></FaStar>}
+/>
+                       
+                </div>
+                <div className=" text-center mt-4">
+
                     {isLoading ? (
                         <Spinner animation="border" variant="primary" />
                     ) : (
