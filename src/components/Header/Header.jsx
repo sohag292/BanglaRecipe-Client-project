@@ -26,10 +26,10 @@ export default function Header() {
                         <ActiveLink to="/">Home</ActiveLink>
                         <ActiveLink to="/blog">Blog</ActiveLink>
                     </Nav>
-                    <Nav>
+                   
                         {
                             user && (
-                                <div className="w-50 h-50 d-flex align-items-center">
+                                <div className="img-container">
                                     <Image title={user.displayName} className="img-fluid" src={user.photoURL} roundedCircle />
                                 </div>
                             )
@@ -40,7 +40,7 @@ export default function Header() {
                                 user ? <button onClick={handleLogout} className="btn btn-success">Logout</button> : <Link to="/login"><button className="btn btn-success">Login</button></Link>
                             }
                        
-                    </Nav>
+                   
                 </Navbar.Collapse>
             </Container>
         </Navbar>

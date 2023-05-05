@@ -64,8 +64,8 @@ export default function Home() {
         </Carousel.Item>
       </Carousel>
       <div className="container my-5">
-      <h1 className="text-center">Our Chief</h1>
-      <hr className="mb-5 w-25 mx-auto" />
+      <h1 className="text-center">Restaurant Chef Services !!</h1>
+      <hr className="mb-5 w-50 mx-auto" />
       {loading ? (
         <div className="text-center">
           <Spinner animation="border" role="status" />

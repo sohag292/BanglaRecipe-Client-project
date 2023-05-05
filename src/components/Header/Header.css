@@ -5,3 +5,8 @@ div a{
     font-size: 15px;
 }
 
+.img-container{
+    width: 6%;
+    margin: 7px 42px 0px 17px;
+    cursor: pointer;
+}

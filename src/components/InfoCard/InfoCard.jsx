@@ -20,14 +20,14 @@ export default function InfoCard({ data }) {
         <div className="col mb-4">
             <div className="card p-4 h-100">
                 <div className="card-body">
-                    <h2 className="card-title mb-4">{recipe_name}</h2>
-                    <h4>Ingredients</h4>
+                    <h4 className="card-title mb-4 ml-4">{recipe_name} <span class="badge bg-secondary ">New</span></h4>
+                    <h5>Ingredients</h5>
                     <ul className="">
                         {ingredients.map((ingred, index) => (
                             <li key={index}>{ingred}</li>
                         ))}
                     </ul>
-                    <h4>Cooking Method</h4>
+                    <h5>Cooking Method</h5>
                     <p className="card-text">{cooking_method}</p>
                 </div>
                 <div className="card-footer text-center">
