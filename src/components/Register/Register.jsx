@@ -6,38 +6,38 @@ export default function Register() {
     const { createUser, updateUserData } = useContext(AuthContext)
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
-  
+
     const handleRegister = event => {
-      event.preventDefault();
-      setSuccess('');
-      setError('');
-      const form = event.target;
-      const name = form.name.value;
-      const email = form.email.value;
-      const password = form.password.value;
-      const photo = form.photo.value;
-  
-    //   email valdation
-      if (password.length < 6) {
-        setError("Password should be at least 6 characters");
-        return;
-      }
-  
-    //   user Create
-      createUser(email, password)
-        .then(result => {
-          const createdUser = result.user;
-          console.log(createdUser);
-          setSuccess("Your Registration Successfully Done!!!")
-          form.reset()
-          updateUserData(result.user, name, photo);
-        })
-        .catch(error => {
-          setError(error.message);
-          form.reset()
-        })
+        event.preventDefault();
+        setSuccess('');
+        setError('');
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+
+        //   email valdation
+        if (password.length < 6) {
+            setError("Password should be at least 6 characters");
+            return;
+        }
+
+        //   user Create
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+                setSuccess("Your Registration Successfully Done!!!")
+                form.reset()
+                updateUserData(result.user, name, photo);
+            })
+            .catch(error => {
+                setError(error.message);
+                form.reset()
+            })
     }
-    
+
     return (
         <div>
             <Container>
@@ -45,9 +45,9 @@ export default function Register() {
                     <h3 className=" text-center">Register your account</h3>
                     <hr className="mb-5" />
                     <Form onSubmit={handleRegister}>
-                    <Form.Text className="text-success">
-                    <p className=" text-success text-center fs-5 fw-bolder">{success}</p>
-                            </Form.Text>
+                        <Form.Text className="text-success">
+                            <p className=" text-success text-center fs-5 fw-bolder">{success}</p>
+                        </Form.Text>
                         <Form.Group controlId="formName">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
@@ -83,8 +83,8 @@ export default function Register() {
                             />
                         </Form.Group>
                         <Form.Text className="text-danger ">
-                                <p className="text-center">{error}</p>
-                            </Form.Text>
+                            <p className="text-center">{error}</p>
+                        </Form.Text>
                         <div className="d-grid gap-2 mt-4 mb-3">
                             <Button variant="primary" type="submit">
                                 Register

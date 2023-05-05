@@ -43,20 +43,20 @@ export default function AuthProvider({ children }) {
     return signInWithPopup(auth, GoogleProvider)
   };
 
-  const signInWithGithub= () =>{
-    return signInWithPopup(auth,GithubProvider )
+  const signInWithGithub = () => {
+    return signInWithPopup(auth, GithubProvider)
   }
 
-  const updateUserData = (user, name, photoURL)=>{
-    updateProfile(user,{
-      displayName:name, photoURL: photoURL
+  const updateUserData = (user, name, photoURL) => {
+    updateProfile(user, {
+      displayName: name, photoURL: photoURL
     })
-    .then(()=>{
-      console.log('user name and photo URL updated');
-    })
-    .catch(error =>{
-      console.log(error)
-    })
+      .then(() => {
+        console.log('user name and photo URL updated');
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   const authInfo = {
@@ -69,7 +69,7 @@ export default function AuthProvider({ children }) {
     signInWithGithub,
     updateUserData
   }
-  
+
   return (
     <AuthContext.Provider value={authInfo}>
       {children}

@@ -29,7 +29,7 @@ export default function Blog() {
     <div className='mb-5'>
       <Container ref={captureRef} >
         <h2 className='text-center my-4'>All Questions</h2>
-        <hr className="pb-4"/>
+        <hr className="pb-4" />
         <Row className="g-4 ">
           <Col md={6}>
             <Card className='h-100 bg-danger bg-gradient'>

@@ -21,23 +21,23 @@ export default function CheifViewDetails() {
                         <p><span className="fw-bolder">Bio:</span> {short_bio}</p>
                         <p><span className="fw-bolder">Recipes:</span> {recipes.join(", ")}</p>
                         <p><span className="fw-bolder">Exprience:</span> {experience}</p>
-                     <div className="d-flex">
-                        <div>
-                        <p><HiThumbUp className="fs-5"/> {likes}</p>
+                        <div className="d-flex">
+                            <div>
+                                <p><HiThumbUp className="fs-5" /> {likes}</p>
+                            </div>
+                            <div className="ms-5 ">
+                                <Link className="text-primary fs-5"><FaFacebook /></Link>
+                                <Link className="text-danger fs-5"><FaYoutube /></Link>
+                                <Link className="text-muted fs-5"><FaTwitter /></Link>
+                                <Link className="text-danger fs-5"><FaInstagram /></Link>
+                            </div>
                         </div>
-                        <div className="ms-5 ">
-                            <Link className="text-primary fs-5"><FaFacebook/></Link>
-                            <Link className="text-danger fs-5"><FaYoutube/></Link>
-                            <Link className="text-muted fs-5"><FaTwitter/></Link>
-                            <Link className="text-danger fs-5"><FaInstagram/></Link>
-                        </div>
-                     </div>
                     </div>
                 </div>
             </div>
-           <div>
-                <div className="row row-cols-1 row-cols-md-3 g-4">{recipes_details.map(data =><InfoCard key={data.recipe_id} data={data}></InfoCard>)}</div>
-           </div>
+            <div>
+                <div className="row row-cols-1 row-cols-md-3 g-4">{recipes_details.map(data => <InfoCard key={data.recipe_id} data={data}></InfoCard>)}</div>
+            </div>
         </div>
     )
 }

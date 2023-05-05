@@ -6,7 +6,7 @@ import { AuthContext, auth } from '../Provider/AuthProvider';
 import { signInWithPopup } from 'firebase/auth';
 export default function Login() {
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
-    const [succes, setSuccess]= useState();
+    const [succes, setSuccess] = useState();
     const [error, setError] = useState()
     const navigate = useNavigate();
     const location = useLocation()
@@ -27,7 +27,7 @@ export default function Login() {
                 console.log(loggedUser);
                 setSuccess("Login successfully")
                 form.reset()
-                navigate(from, {replace:true})
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -36,27 +36,27 @@ export default function Login() {
             })
     }
 
-    const handleGoogleLogin = ()=>{
+    const handleGoogleLogin = () => {
         signInWithGoogle()
-      .then((result) => {
-            const user = result.user;
-            setSuccess("Login successfully")
-            navigate(from, {replace:true})
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+            .then((result) => {
+                const user = result.user;
+                setSuccess("Login successfully")
+                navigate(from, { replace: true })
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
-    const handleGithubLogin = ()=>{
+    const handleGithubLogin = () => {
         signInWithGithub()
-      .then((result) => {
-            const user = result.user;
-            setSuccess("Login successfully")
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+            .then((result) => {
+                const user = result.user;
+                setSuccess("Login successfully")
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     return (
@@ -66,9 +66,9 @@ export default function Login() {
                     <h3 className=" text-center">Login your account</h3>
                     <hr className="mb-5" />
                     <Form onSubmit={handleLogin}>
-                    <Form.Text className="text-success">
-                    <p className=" text-success text-center fs-5 fw-bolder">{succes}</p>
-                            </Form.Text>
+                        <Form.Text className="text-success">
+                            <p className=" text-success text-center fs-5 fw-bolder">{succes}</p>
+                        </Form.Text>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
@@ -93,7 +93,7 @@ export default function Login() {
                                 Login
                             </Button>
                             <h6 className='text-center'>OR</h6>
-                            <Button  onClick={handleGoogleLogin} variant="danger">
+                            <Button onClick={handleGoogleLogin} variant="danger">
                                 <FaGoogle /> Login With Google
                             </Button>
                             <Button onClick={handleGithubLogin} variant="dark" type="submit">

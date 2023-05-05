@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+console.log();
 const firebaseConfig = {
-  apiKey: "AIzaSyCU49KwEInkHE49u3BRpDij5Nc6jaGmaxk",
-  authDomain: "banglarecipe-b3466.firebaseapp.com",
-  projectId: "banglarecipe-b3466",
-  storageBucket: "banglarecipe-b3466.appspot.com",
-  messagingSenderId: "116488956115",
-  appId: "1:116488956115:web:d8957b896c8294917c0c26"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.MESSAGINGSENDERID,
+  appId:import.meta.env.VITE_APIID
 };
 
 // Initialize Firebase
