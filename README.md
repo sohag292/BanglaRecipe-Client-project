@@ -8,4 +8,4 @@
 </ul>
 
 
-Project Link: : [https://github.io/create-react-app/](https://glowing-chimera-db0e43.netlify.app/)
+Project Link: : [https://banglarecipe-b3466.web.app/](https://banglarecipe-b3466.web.app/)
